@@ -336,15 +336,19 @@ const App: React.FC = () => {
                         animate="after"
                         className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-10 tracking-tighter leading-[0.85] text-white flex flex-col lg:items-start items-center uppercase"
                       >
-                        <div className="text-gradient flex flex-wrap items-center justify-center lg:justify-start drop-shadow-[0_0_30px_rgba(56,189,248,0.2)]">
-                          {splitName("HO VAN THANH PHUONG").map((l, i) => (
-                            <motion.span
-                              key={`fullname-${i}`}
-                              variants={letterVars}
-                              className="inline-block whitespace-pre"
-                            >
-                              {l}
-                            </motion.span>
+                        <div className="text-gradient flex flex-wrap items-center justify-center lg:justify-start gap-x-[0.25em] gap-y-2 drop-shadow-[0_0_30px_rgba(56,189,248,0.2)]">
+                          {"HO VAN THANH PHUONG".split(" ").map((word, wIdx) => (
+                            <span key={`word-${wIdx}`} className="inline-block whitespace-nowrap">
+                              {Array.from(word).map((l, i) => (
+                                <motion.span
+                                  key={`fullname-${wIdx}-${i}`}
+                                  variants={letterVars}
+                                  className="inline-block"
+                                >
+                                  {l}
+                                </motion.span>
+                              ))}
+                            </span>
                           ))}
                         </div>
                       </motion.h1>
