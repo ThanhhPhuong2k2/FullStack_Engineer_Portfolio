@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Phuong | Full-Stack Software Engineer</title>
+    <meta name="description" content="Portfolio of Thanh Phuong, a Full-Stack Software Engineer with experience building scalable web applications using React, Next.js, Node.js, TypeScript, and modern backend technologies. Explore projects, technical skills, and professional experience.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Thanh Phuong | Full-Stack Software Engineer">
+    <meta property="og:description" content="Portfolio of Thanh Phuong, a Full-Stack Software Engineer with experience building scalable web applications using React, Next.js, Node.js, TypeScript, and modern backend technologies. Explore projects, technical skills, and professional experience.">
+    <meta property="og:image" content="https://res.cloudinary.com/thanhphuongdev/image/upload/v1783936804/Screenshot_2026-07-13_165801_z65ck1.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Thanh Phuong | Full-Stack Software Engineer">
+    <meta property="twitter:description" content="Portfolio of Thanh Phuong, a Full-Stack Software Engineer with experience building scalable web applications using React, Next.js, Node.js, TypeScript, and modern backend technologies. Explore projects, technical skills, and professional experience.">
+    <meta property="twitter:image" content="https://res.cloudinary.com/thanhphuongdev/image/upload/v1783936804/Screenshot_2026-07-13_165801_z65ck1.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #020617;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-deep);
+            color: #f8fafc;
+            overflow-x: hidden;
+            /* Ẩn con trỏ chuột mặc định trên desktop */
+            cursor: none;
+        }
+        /* Đảm bảo các phần tử tương tác cũng ẩn con trỏ mặc định */
+        a, button, .cursor-pointer {
+            cursor: none !important;
+        }
+        .glass {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #f472b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        ::selection {
+            background: #38bdf8;
+            color: #000;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Premium Noise Texture */
+        .noise-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            content: "";
+            opacity: .04;
+            z-index: 9999;
+            pointer-events: none;
+            background-image: url('https://res.cloudinary.com/thanhphuongdev/image/upload/v1769888000/noise_ocp1zv.png');
+        }
+
+        /* Perspective for 3D Cards */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+
+        /* Khôi phục con trỏ cho mobile */
+        @media (pointer: coarse) {
+            body, a, button, .cursor-pointer {
+                cursor: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="noise-bg"></div>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
