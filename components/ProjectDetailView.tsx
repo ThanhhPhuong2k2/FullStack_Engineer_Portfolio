@@ -1347,7 +1347,7 @@ const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
     const subtitleText = project.subtitle?.[lang] || project.role?.[lang] || "Software Engineering Project";
     const pageTitle = `${project.title} - ${subtitleText} | Thanh Phuong`;
     const pageDesc = project.description?.[lang] || defaultDesc;
-    const pageImage = project.image || (project.images && project.images[0]) || defaultImg;
+    const pageImage = (project.images && project.images.length > 0) ? project.images[0] : (project.image || defaultImg);
     const pageUrl = window.location.href;
 
     // Update document title
