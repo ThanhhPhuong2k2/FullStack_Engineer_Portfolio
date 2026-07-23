@@ -390,10 +390,10 @@ const App: React.FC = () => {
               {/* Projects Section */}
               <section
                 id="experience"
-                className="relative z-10 py-24 px-6 bg-slate-950/20"
+                className="relative z-10 py-12 md:py-20 px-6 bg-slate-950/20"
               >
                 <div className="container mx-auto">
-                  <div className="mb-16 text-center">
+                  <div className="mb-10 md:mb-16 text-center">
                     <motion.h2
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -420,7 +420,7 @@ const App: React.FC = () => {
                       ))}
                   </div>
 
-                  <div className="mt-16 text-center">
+                  <div className="mt-10 md:mt-16 text-center">
                     <motion.button
                       whileHover={{
                         scale: 1.05,
@@ -498,7 +498,7 @@ const App: React.FC = () => {
                 </div>
               </section>
 
-              <section id="skills" className="relative z-10 py-24 px-6">
+              <section id="skills" className="relative z-10 py-12 md:py-20 px-6">
                 <div className="container mx-auto">
                   <InteractiveSkills lang={lang} />
                 </div>
@@ -507,9 +507,9 @@ const App: React.FC = () => {
               {/* Other sections remain the same but benefit from improved spacing */}
               <section
                 id="journey"
-                className="relative z-10 py-24 bg-slate-950/40"
+                className="relative z-10 py-12 md:py-20 bg-slate-950/40"
               >
-                <div className="container mx-auto px-6 mb-16 text-center">
+                <div className="container mx-auto px-6 mb-10 md:mb-16 text-center">
                   <motion.h2 className="text-3xl md:text-7xl font-black tracking-tighter text-white uppercase leading-none">
                     {lang === "en" ? "MY" : "HÀNH"}{" "}
                     <span className="text-gradient">
@@ -521,9 +521,9 @@ const App: React.FC = () => {
               </section>
 
               {/* Work Experience Section */}
-              <section id="work" className="relative z-10 py-24 px-6">
+              <section id="work" className="relative z-10 py-12 md:py-20 px-6">
                 <div className="container mx-auto">
-                  <div className="mb-16 text-center">
+                  <div className="mb-10 md:mb-16 text-center">
                     <motion.h2
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}

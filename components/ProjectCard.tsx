@@ -70,15 +70,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, lang, onOpen 
       viewport={{ once: true }}
       transition={{ duration: 0.8, delay: index * 0.1 }}
       onClick={onOpen}
-      className="group relative w-full aspect-video rounded-2xl md:rounded-[2.5rem] overflow-hidden bg-slate-900 border border-white/10 cursor-pointer shadow-xl"
+      className="group relative w-full aspect-video rounded-2xl md:rounded-[2.5rem] overflow-hidden bg-slate-900 border border-white/10 cursor-pointer shadow-xl select-none active:scale-[0.98] transition-transform duration-200"
     >
       <motion.img
         src={project.image}
         alt={project.title}
-        className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out group-hover:scale-105 group-hover:brightness-[0.05] group-hover:blur-[8px]"
+        className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out md:group-hover:scale-105 md:group-hover:brightness-[0.08] md:group-hover:blur-[8px]"
       />
 
-      <div className="absolute inset-x-0 bottom-0 p-5 md:p-12 z-20 bg-gradient-to-t from-black/95 via-black/40 to-transparent transition-all duration-500 group-hover:opacity-0 group-hover:translate-y-6">
+      <div className="absolute inset-x-0 bottom-0 p-5 md:p-12 z-20 bg-gradient-to-t from-black/95 via-black/40 to-transparent transition-all duration-500 md:group-hover:opacity-0 md:group-hover:translate-y-6">
         <div className="flex flex-col gap-0.5 mb-4 md:mb-8">
            <h3 className="text-xl md:text-5xl font-black text-white tracking-tighter uppercase leading-none drop-shadow-lg">
              {project.title}
@@ -100,20 +100,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, lang, onOpen 
         </div>
       </div>
 
-      <motion.div 
-        initial="initial"
-        whileHover="hover"
-        className="absolute inset-0 z-30 flex flex-col justify-center items-center p-6 md:p-12 text-center bg-black/40 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-      >
-        <motion.div 
-          variants={contentVariants}
-          className="max-w-2xl flex flex-col items-center justify-center h-full w-full px-4"
-        >
+      <div className="absolute inset-0 z-30 flex flex-col justify-center items-center p-6 md:p-12 text-center bg-black/50 backdrop-blur-[2px] opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+        <div className="max-w-2xl flex flex-col items-center justify-center h-full w-full px-4 transform translate-y-4 md:group-hover:translate-y-0 transition-transform duration-500">
           <p className="text-xs md:text-lg text-slate-200 font-medium leading-relaxed text-center overflow-y-auto max-h-[90%] no-scrollbar whitespace-pre-line">
             {project.description[lang]}
           </p>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </motion.div>
   );
 };

@@ -61,9 +61,9 @@ const ContactCard: React.FC<{
 
 const ContactSection: React.FC<ContactSectionProps> = ({ lang }) => {
   return (
-    <section id="contact" className="relative z-10 py-32 px-6">
+    <section id="contact" className="relative z-10 py-12 md:py-20 px-6">
       <div className="container mx-auto">
-        <div className="relative mb-20 text-center lg:text-left">
+        <div className="relative mb-8 md:mb-16 text-center lg:text-left">
           <motion.h2 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}

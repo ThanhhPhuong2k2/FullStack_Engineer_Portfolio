@@ -1334,6 +1334,114 @@ const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
   }, [project]);
 
+  // Dynamic SEO meta tags management for Project Detail View
+  useEffect(() => {
+    if (!project) return;
+
+    const defaultTitle = "Thanh Phuong | Full-Stack Software Engineer";
+    const defaultDesc =
+      "Portfolio of Thanh Phuong, a Full-Stack Software Engineer with experience building scalable web applications using React, Next.js, Node.js, TypeScript, and modern backend technologies. Explore projects, technical skills, and professional experience.";
+    const defaultImg =
+      "https://res.cloudinary.com/thanhphuongdev/image/upload/v1783936804/Screenshot_2026-07-13_165801_z65ck1.png";
+
+    const subtitleText = project.subtitle?.[lang] || project.role?.[lang] || "Software Engineering Project";
+    const pageTitle = `${project.title} - ${subtitleText} | Thanh Phuong`;
+    const pageDesc = project.description?.[lang] || defaultDesc;
+    const pageImage = project.image || (project.images && project.images[0]) || defaultImg;
+    const pageUrl = window.location.href;
+
+    // Update document title
+    document.title = pageTitle;
+
+    // Helper function to create or update a meta tag
+    const setMetaTag = (selector: string, attrName: string, attrVal: string, content: string) => {
+      let el = document.querySelector(selector) as HTMLMetaElement | null;
+      if (!el) {
+        el = document.createElement("meta");
+        el.setAttribute(attrName, attrVal);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("content", content);
+    };
+
+    // Helper function to update canonical link
+    const setCanonicalLink = (url: string) => {
+      let link = document.querySelector("link[rel='canonical']") as HTMLLinkElement | null;
+      if (!link) {
+        link = document.createElement("link");
+        link.setAttribute("rel", "canonical");
+        document.head.appendChild(link);
+      }
+      link.setAttribute("href", url);
+    };
+
+    // Set Primary SEO & Social Meta Tags
+    setMetaTag("meta[name='description']", "name", "description", pageDesc);
+    setMetaTag("meta[property='og:title']", "property", "og:title", pageTitle);
+    setMetaTag("meta[property='og:description']", "property", "og:description", pageDesc);
+    setMetaTag("meta[property='og:image']", "property", "og:image", pageImage);
+    setMetaTag("meta[property='og:url']", "property", "og:url", pageUrl);
+    setMetaTag("meta[property='og:type']", "property", "og:type", "article");
+
+    setMetaTag("meta[property='twitter:title']", "property", "twitter:title", pageTitle);
+    setMetaTag("meta[property='twitter:description']", "property", "twitter:description", pageDesc);
+    setMetaTag("meta[property='twitter:image']", "property", "twitter:image", pageImage);
+    setMetaTag("meta[property='twitter:card']", "property", "twitter:card", "summary_large_image");
+
+    setCanonicalLink(pageUrl);
+
+    // Inject JSON-LD Structured Data for Google Rich Snippets
+    const schemaObj = {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": project.title,
+      "headline": pageTitle,
+      "description": pageDesc,
+      "image": pageImage,
+      "url": pageUrl,
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web",
+      "author": {
+        "@type": "Person",
+        "name": "Ho Van Thanh Phuong",
+        "jobTitle": "Full-Stack Software Engineer",
+        "url": "https://checkin.metadap.io/"
+      },
+      "keywords": project.tags ? project.tags.join(", ") : undefined
+    };
+
+    let scriptTag = document.getElementById("project-jsonld-schema") as HTMLScriptElement | null;
+    if (!scriptTag) {
+      scriptTag = document.createElement("script");
+      scriptTag.id = "project-jsonld-schema";
+      scriptTag.type = "application/ld+json";
+      document.head.appendChild(scriptTag);
+    }
+    scriptTag.textContent = JSON.stringify(schemaObj);
+
+    // Cleanup & Restore Default Portfolio Meta Tags when leaving detail view
+    return () => {
+      document.title = defaultTitle;
+      setMetaTag("meta[name='description']", "name", "description", defaultDesc);
+      setMetaTag("meta[property='og:title']", "property", "og:title", defaultTitle);
+      setMetaTag("meta[property='og:description']", "property", "og:description", defaultDesc);
+      setMetaTag("meta[property='og:image']", "property", "og:image", defaultImg);
+      setMetaTag("meta[property='og:url']", "property", "og:url", window.location.origin);
+      setMetaTag("meta[property='og:type']", "property", "og:type", "website");
+
+      setMetaTag("meta[property='twitter:title']", "property", "twitter:title", defaultTitle);
+      setMetaTag("meta[property='twitter:description']", "property", "twitter:description", defaultDesc);
+      setMetaTag("meta[property='twitter:image']", "property", "twitter:image", defaultImg);
+
+      setCanonicalLink(window.location.origin);
+
+      const existingScript = document.getElementById("project-jsonld-schema");
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, [project, lang]);
+
   // Preload all project images into memory to avoid network latency and lag on switch
   useEffect(() => {
     if (images && images.length > 0) {
