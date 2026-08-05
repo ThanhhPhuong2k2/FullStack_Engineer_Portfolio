@@ -40,7 +40,12 @@ export const SKILLS: EnhancedSkill[] = [
   { name: 'React Query', category: 'Frontend', color: '#FF4154', iconSlug: 'reactquery' },
   { name: 'Axios', category: 'Frontend', color: '#5A29E4', iconSlug: 'axios' },
   { name: 'Node.js', category: 'Backend', color: '#339933', iconSlug: 'nodedotjs' },
+  { name: 'NestJS', category: 'Backend', color: '#E0234E', iconSlug: 'nestjs' },
   { name: 'Express.js', category: 'Backend', color: '#ffffff', iconSlug: 'express' },
+  { name: 'OpenAI API', category: 'Backend', color: '#10A37F', iconSlug: 'openai' },
+  { name: 'PostgreSQL', category: 'Database', color: '#4169E1', iconSlug: 'postgresql' },
+  { name: 'Prisma', category: 'Database', color: '#2D3748', iconSlug: 'prisma' },
+  { name: 'Redis', category: 'Database', color: '#DC382D', iconSlug: 'redis' },
   { name: 'SQL Server', category: 'Database', color: '#CC2927', iconSlug: 'microsoftsqlserver' },
   { name: 'MySQL', category: 'Database', color: '#4479A1', iconSlug: 'mysql' },
   { name: 'MongoDB', category: 'Database', color: '#47A248', iconSlug: 'mongodb' },
@@ -199,6 +204,56 @@ export const PROJECTS: Project[] = [
         'Kết nối ví thông minh Web3 phi tập trung sử dụng giao thức Wagmi và Web3.js',
         'Quy trình chuyển tài sản ngang hàng (P2P) bảo mật trực tiếp tới email chưa đăng ký',
         'Luồng giao dịch đáng tin cậy vận hành bởi Kafka kết hợp VietQR, đối soát ACB và cổng VNPAY'
+      ]
+    }
+  },
+  {
+    title: 'Ôn TOEIC',
+    description: {
+      en: 'Developed an AI-powered English learning platform serving 2,500+ users, providing TOEIC learning features including Listening, Speaking, Reading, Grammar, Vocabulary, and mock tests.',
+      vi: 'Phát triển nền tảng học tiếng Anh ứng dụng AI phục vụ hơn 2,500 người dùng, cung cấp các tính năng học TOEIC bao gồm Nghe, Nói, Đọc, Ngữ pháp, Từ vựng và Đề thi thử.'
+    },
+    tags: [
+      'Next.js',
+      'TypeScript',
+      'NestJS',
+      'PostgreSQL',
+      'Redis',
+      'Prisma',
+      'Socket.io',
+      'OpenAI API',
+      'Cloudinary',
+      'Docker',
+      'Speech Recognition API',
+      'AI Recommendation System'
+    ],
+    image: 'https://ontoeic.com/opengraph-image?521c820942e3ceff',
+    link: 'https://www.ontoeic.com/',
+    year: '2025',
+    role: { en: 'Fullstack Developer (Freelance)', vi: 'Lập trình viên Fullstack (Freelance)' },
+    subtitle: { en: 'AI-Powered TOEIC Learning Platform', vi: 'Nền tảng luyện thi TOEIC ứng dụng AI' },
+    color: '#6366f1',
+    images: [
+      'https://ontoeic.com/opengraph-image?521c820942e3ceff',
+      'https://res.cloudinary.com/fqqdj43k/image/upload/v1785908415/Screenshot_2026-08-05_123658_cwqrbs.png',
+      'https://res.cloudinary.com/fqqdj43k/image/upload/v1785908415/729790721_27608574332126704_5403600951846826839_n_kyebij.jpg',
+      'https://res.cloudinary.com/fqqdj43k/image/upload/v1785908415/728225676_27585984394385698_5479477221126610036_n_dnv9kg.jpg',
+      'https://res.cloudinary.com/fqqdj43k/image/upload/v1785908417/726914633_27585944151056389_8875298119599664239_n_pdvo1g.jpg'
+    ],
+    features: {
+      en: [
+        'Developed an AI-powered English learning platform serving 2,500+ users, providing TOEIC learning features including Listening, Speaking, Reading, Grammar, Vocabulary, and mock tests.',
+        'Designed and implemented frontend interfaces, backend APIs, and database architecture to support user management, learning progress tracking, and content workflows.',
+        'Integrated AI and speech recognition APIs to analyze pronunciation, fluency, and speaking accuracy, providing AI-generated feedback and personalized learning recommendations.',
+        'Developed vocabulary learning features, progress tracking, and a competitive vocabulary challenge system that allows users to compete with each other.',
+        'Implemented AI-powered learning path recommendations based on user performance, learning goals, and progress data.'
+      ],
+      vi: [
+        'Phát triển nền tảng học tiếng Anh ứng dụng AI phục vụ hơn 2,500 người dùng, cung cấp các tính năng học TOEIC bao gồm Nghe, Nói, Đọc, Ngữ pháp, Từ vựng và Đề thi thử.',
+        'Thiết kế và phát triển giao diện người dùng, backend API và kiến trúc cơ sở dữ liệu hỗ trợ quản lý người dùng, theo dõi tiến độ học tập và quy trình quản lý nội dung.',
+        'Tích hợp AI và Speech Recognition API để phân tích phát âm, độ trôi chảy và độ chính xác bài nói, cung cấp phản hồi tự động và gợi ý học tập cá nhân hóa.',
+        'Phát triển các tính năng học từ vựng, theo dõi tiến trình và hệ thống thách đấu từ vựng đối kháng cho phép người dùng thi đấu trực tiếp với nhau.',
+        'Triển khai thuật toán gợi ý lộ trình học tập ứng dụng AI dựa trên kết quả luyện tập, mục tiêu học tập và dữ liệu tiến độ của người dùng.'
       ]
     }
   },
@@ -394,6 +449,25 @@ export const PROJECTS: Project[] = [
 ];
 
 export const getExperiences = (lang: Language) => [
+  {
+    company: 'Ôn TOEIC (Freelance Project)',
+    role: lang === 'en' ? 'Full-Stack Developer (Freelance)' : 'Lập trình viên Full-Stack (Freelance)',
+    period: '10/2025 – PRESENT',
+    location: lang === 'en' ? 'Da Nang, Vietnam / Remote' : 'Đà Nẵng, Việt Nam / Remote',
+    achievements: lang === 'en' ? [
+      'Built and scaled an AI-powered TOEIC learning platform growing to 2,500+ active users.',
+      'Developed speech recognition & AI feedback for pronunciation and fluency analysis.',
+      'Implemented real-time competitive vocabulary challenges using WebSockets (Socket.io).',
+      'Engineered adaptive AI-based learning path recommendations based on user performance data.'
+    ] : [
+      'Xây dựng và phát triển nền tảng học TOEIC ứng dụng AI phục vụ hơn 2,500 người dùng.',
+      'Tích hợp AI phân tích giọng nói, đánh giá phát âm và độ trôi chảy theo thời gian thực.',
+      'Phát triển tính năng đấu từ vựng đối kháng thời gian thực qua Socket.io.',
+      'Xây dựng hệ thống gợi ý lộ trình học tập cá nhân hóa dựa trên dữ liệu quá trình học.'
+    ],
+    tech: ['Next.js', 'TypeScript', 'NestJS', 'PostgreSQL', 'Redis', 'Prisma', 'Socket.io', 'OpenAI API', 'Cloudinary', 'Docker', 'Speech Recognition API', 'AI Recommendation System'],
+    accent: '#6366f1'
+  },
   {
     company: 'METADAP',
     role: lang === 'en' ? 'Fullstack Developer' : 'Lập trình viên Fullstack',

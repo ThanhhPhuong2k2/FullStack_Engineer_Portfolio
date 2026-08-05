@@ -1255,6 +1255,129 @@ const PROJECT_CUSTOM_DATA: Record<
       },
     ],
   },
+  "Ôn TOEIC": {
+    metrics: {
+      type: { en: "AI-Powered English Learning Platform", vi: "Nền tảng học tiếng Anh ứng dụng AI" },
+      status: { en: "Production", vi: "Production" },
+      duration: { en: "10/2025 to present", vi: "10/2025 đến hiện tại" },
+      role: { en: "Full Stack Developer (Freelance)", vi: "Lập trình viên Full Stack (Freelance)" },
+      teamSize: { en: "3 members", vi: "3 thành viên" },
+    },
+    techStack: {
+      frontend: [
+        "• Next.js, React, TypeScript",
+        "• Tailwind CSS, shadcn/ui",
+        "• React Query, React Hook Form",
+      ],
+      backend: [
+        "• NestJS, Node.js",
+        "• RESTful APIs",
+        "• JWT Authentication",
+        "• Validation & API Security",
+      ],
+      database: [
+        "• PostgreSQL",
+        "• Prisma ORM",
+        "• Database Design & Query Optimization",
+      ],
+      architecture: [
+        "• Modular Backend Architecture",
+        "• Real-time Communication with Socket.io",
+        "• Scalable API Design",
+        "• Docker-based Development & Deployment",
+      ],
+      integration: [
+        "• OpenAI API (AI-generated feedback and learning recommendations)",
+        "• Speech Recognition API (pronunciation and speaking assessment)",
+        "• AI Recommendation System",
+      ],
+    },
+    responsibilities: [
+      {
+        title: { en: "AI Speech & Pronunciation", vi: "AI Phân tích Giọng nói & Phát âm" },
+        desc: {
+          en: "Integrated Speech Recognition API & OpenAI to analyze pronunciation accuracy and offer immediate feedback.",
+          vi: "Tích hợp Speech Recognition API & OpenAI phân tích phát âm và đưa ra phản hồi tức thì.",
+        },
+        accent: "sky",
+      },
+      {
+        title: { en: "Real-time Vocabulary Arena", vi: "Đấu từ vựng thời gian thực" },
+        desc: {
+          en: "Engineered high-concurrency Socket.io WebSocket servers for 1v1 multiplayer vocabulary battles.",
+          vi: "Xây dựng máy chủ WebSocket Socket.io xử lý thi đấu từ vựng đối kháng 1v1 thời gian thực.",
+        },
+        accent: "indigo",
+      },
+      {
+        title: { en: "Adaptive Recommendation System", vi: "Hệ thống gợi ý lộ trình AI" },
+        desc: {
+          en: "Developed smart recommendation algorithms mapping weak skills to target practice modules.",
+          vi: "Phát triển thuật toán gợi ý lộ trình thông minh tự động đề xuất bài luyện tập phù hợp.",
+        },
+        accent: "purple",
+      },
+      {
+        title: { en: "Scalable Modular Backend", vi: "Backend mô-đun hóa trên NestJS" },
+        desc: {
+          en: "Architected NestJS backend services with PostgreSQL, Prisma ORM, and Redis caching layers.",
+          vi: "Xây dựng backend NestJS với PostgreSQL, Prisma ORM và bộ nhớ đệm Redis tối ưu.",
+        },
+        accent: "emerald",
+      },
+    ],
+    backendContributions: [
+      {
+        en: "Engineered NestJS backend services with JWT authentication, validation, and API security guards.",
+        vi: "Phát triển backend NestJS với xác thực JWT, validation và các bộ bảo vệ API an toàn.",
+      },
+      {
+        en: "Optimized PostgreSQL queries & Prisma ORM database models for multi-user test processing.",
+        vi: "Tối ưu hóa truy vấn PostgreSQL & mô hình Prisma ORM xử lý đề thi cho nhiều người dùng đồng thời.",
+      },
+      {
+        en: "Integrated OpenAI API for AI feedback generation and Speech Recognition for audio evaluations.",
+        vi: "Tích hợp OpenAI API tạo phản hồi AI và Speech Recognition đánh giá âm thanh lời nói.",
+      },
+    ],
+    frontendContributions: [
+      {
+        en: "Built responsive Next.js, React & TypeScript UI using Tailwind CSS, shadcn/ui, and React Hook Form.",
+        vi: "Xây dựng giao diện Next.js, React & TypeScript mượt mà bằng Tailwind CSS, shadcn/ui và React Hook Form.",
+      },
+      {
+        en: "Managed client server-state hydration using React Query (TanStack Query) for instant cache sync.",
+        vi: "Quản lý state server-client hiệu quả bằng React Query giúp đồng bộ dữ liệu siêu tốc.",
+      },
+    ],
+    challenges: [
+      {
+        title: {
+          en: "Real-time AI Feedback & System Scale",
+          vi: "Phản hồi AI thời gian thực & Quy mô hệ thống",
+        },
+        color: "indigo",
+        items: [
+          {
+            en: "Challenge: Providing low-latency speaking assessment and real-time AI feedback for over 2,500 active learners without blocking backend queues.",
+            vi: "Thử thách: Cung cấp đánh giá bài nói độ trễ thấp và phản hồi AI thời gian thực cho hơn 2.500 người dùng mà không gây nghẽn hàng đợi backend.",
+          },
+          {
+            en: "Solution: Built an asynchronous processing pipeline with Redis caching, streaming OpenAI responses, and optimized WebSockets.",
+            vi: "Giải pháp: Xây dựng quy trình xử lý bất đồng bộ kết hợp Redis cache, streaming response OpenAI và WebSocket tối ưu.",
+          },
+          {
+            en: "Achievement: Successfully launched and scaled an AI-powered TOEIC learning platform, growing from 0 to 1,000+ users within 3 months and reaching 2,200+ users.",
+            vi: "Thành tựu: Triển khai thành công và mở rộng nền tảng học TOEIC ứng dụng AI, tăng trưởng từ 0 lên 1.000+ người dùng trong vòng 3 tháng và đạt 2.200+ người dùng.",
+          },
+          {
+            en: "Achievement: Achieved 1,300+ learning hours, 140,000+ exercises, and 10,000+ speaking practices.",
+            vi: "Thành tựu: Đạt 1.300+ giờ học, 140.000+ bài tập hoàn thành và 10.000+ lượt luyện nói.",
+          },
+        ],
+      },
+    ],
+  },
 };
 
 const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({

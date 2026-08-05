@@ -72,7 +72,7 @@ Keep your answers concise, engaging, and professional. If you don't know somethi
   }
 });
 
-// SEO Route for Project Detail Page & Main Pages
+// SEO Route for Project Detail Page
 async function handleSEORequest(req: express.Request, res: express.Response, next: express.NextFunction, viteInstance: any) {
   try {
     const url = req.originalUrl || req.url;
@@ -111,13 +111,23 @@ async function handleSEORequest(req: express.Request, res: express.Response, nex
       : path.join(process.cwd(), "index.html");
 
     if (!fs.existsSync(indexPath)) {
-      return next();
+      return res.status(404).send("Not Found");
     }
 
-    let rawHtml = fs.readFileSync(indexPath, "utf8");
+    let rawHtml = "";
+    try {
+      rawHtml = fs.readFileSync(indexPath, "utf8");
+    } catch (e) {
+      console.error("Error reading index.html:", e);
+      return res.status(500).send("Error loading index.html");
+    }
 
     if (viteInstance && process.env.NODE_ENV !== "production") {
-      rawHtml = await viteInstance.transformIndexHtml(url, rawHtml);
+      try {
+        rawHtml = await viteInstance.transformIndexHtml(url, rawHtml);
+      } catch (e) {
+        console.error("Error running transformIndexHtml:", e);
+      }
     }
 
     const safeTitle = seoTitle.replace(/"/g, "&quot;");
@@ -178,39 +188,33 @@ async function handleSEORequest(req: express.Request, res: express.Response, nex
       .replace(/<meta\s+property="twitter:[^"]+"\s+content=".*?"\s*\/?>/gi, "")
       .replace(/<link\s+rel="canonical"\s+href=".*?"\s*\/?>/gi, "");
 
-    const finalHtml = cleanHtml.replace("</head>", `${seoMetaBlock}\n</head>`);
+    const finalHtml = cleanHtml.replace(/<\/head>/i, () => `${seoMetaBlock}\n</head>`);
 
     res.setHeader("Content-Type", "text/html");
     return res.status(200).send(finalHtml);
   } catch (err) {
     console.error("Error serving SEO HTML:", err);
-    return next();
+    return res.status(200).send("<!DOCTYPE html><html><head><title>Thanh Phuong</title></head><body><div id='root'></div></body></html>");
   }
 }
 
 async function startServer() {
   let viteInstance: any = null;
 
+  // 1. Specific SEO Route for Project Detail Pages
+  app.get("/project/:slug", (req, res, next) => handleSEORequest(req, res, next, viteInstance));
+
+  // 2. Vite Middleware for Development or Static Files for Production
   if (process.env.NODE_ENV !== "production") {
     viteInstance = await createViteServer({
       server: { middlewareMode: true },
-      appType: "custom",
+      appType: "spa",
     });
-  }
-
-  // SEO Route for Project Detail Page
-  app.get("/project/:slug", (req, res, next) => handleSEORequest(req, res, next, viteInstance));
-
-  // Vite middleware for development static assets
-  if (viteInstance) {
     app.use(viteInstance.middlewares);
   } else {
     const distPath = path.join(process.cwd(), "dist");
     app.use(express.static(distPath));
-    app.get("*", (req, res, next) => {
-      if (req.headers.accept?.includes("text/html")) {
-        return handleSEORequest(req, res, next, viteInstance);
-      }
+    app.get("*all", (req, res) => {
       res.sendFile(path.join(distPath, "index.html"));
     });
   }

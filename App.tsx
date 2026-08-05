@@ -381,6 +381,52 @@ const App: React.FC = () => {
                             </>
                           )}
                         </p>
+
+                        <div className="mt-8 pl-8 flex flex-wrap items-center gap-4">
+                          <a
+                            href="https://drive.google.com/file/d/14vyxC-Xf4PQyyjBmUueAyC7Zd1MY1wF1/view"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-3 px-8 py-3.5 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-black rounded-2xl shadow-[0_0_30px_rgba(56,189,248,0.3)] hover:shadow-[0_0_40px_rgba(56,189,248,0.5)] hover:scale-105 active:scale-95 transition-all text-sm uppercase tracking-wider group"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-5 w-5 group-hover:translate-y-0.5 transition-transform"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2.5}
+                                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                              />
+                            </svg>
+                            <span>{lang === "en" ? "DOWNLOAD CV" : "TẢI XUỐNG CV"}</span>
+                          </a>
+
+                          <a
+                            href="#experience"
+                            className="inline-flex items-center gap-2 px-6 py-3.5 glass border border-white/10 hover:border-white/30 text-slate-300 hover:text-white font-bold rounded-2xl hover:bg-white/10 transition-all text-sm uppercase tracking-wider"
+                          >
+                            <span>{lang === "en" ? "VIEW PROJECTS" : "XEM DỰ ÁN"}</span>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-4 w-4"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                              />
+                            </svg>
+                          </a>
+                        </div>
                       </motion.div>
                     </div>
                   </div>
