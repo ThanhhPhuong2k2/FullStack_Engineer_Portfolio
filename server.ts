@@ -135,37 +135,36 @@ async function handleSEORequest(req: express.Request, res: express.Response, nex
       }
     }
 
-    const safeTitle = seoTitle.replace(/"/g, "&quot;");
-    const safeDesc = seoDesc.replace(/"/g, "&quot;");
+    const safeTitle = seoTitle.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    const safeDesc = seoDesc.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     const safeImage = seoImage;
     const safeUrl = fullUrl;
 
     const seoMetaBlock = `
     <!-- Dynamic Server-Side Injected Meta Tags for Facebook / Zalo / Google Crawlers -->
     <title>${safeTitle}</title>
-    <meta name="description" content="${safeDesc}">
-    <meta name="keywords" content="${seoKeywords.join(", ")}">
-    <link rel="canonical" href="${safeUrl}">
+    <meta name="description" content="${safeDesc}" />
+    <meta name="keywords" content="${seoKeywords.join(", ")}" />
+    <link rel="canonical" href="${safeUrl}" />
 
     <!-- Open Graph / Facebook / Zalo -->
-    <meta property="og:type" content="${seoType}">
-    <meta property="og:site_name" content="Hồ Văn Thanh Phương | Full-Stack Engineer">
-    <meta property="og:title" content="${safeTitle}">
-    <meta property="og:description" content="${safeDesc}">
-    <meta property="og:image" content="${safeImage}">
-    <meta property="og:image:secure_url" content="${safeImage}">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:url" content="${safeUrl}">
-    <meta property="og:locale" content="vi_VN">
-    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:type" content="${seoType}" />
+    <meta property="og:site_name" content="Hồ Văn Thanh Phương | Full-Stack Engineer" />
+    <meta property="og:title" content="${safeTitle}" />
+    <meta property="og:description" content="${safeDesc}" />
+    <meta property="og:image" content="${safeImage}" />
+    <meta property="og:image:secure_url" content="${safeImage}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="${safeUrl}" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:locale:alternate" content="en_US" />
 
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="${safeTitle}">
-    <meta name="twitter:description" content="${safeDesc}">
-    <meta name="twitter:image" content="${safeImage}">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${safeTitle}" />
+    <meta name="twitter:description" content="${safeDesc}" />
+    <meta name="twitter:image" content="${safeImage}" />
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
