@@ -96,12 +96,15 @@ async function handleSEORequest(req: express.Request, res: express.Response, nex
 
       if (project) {
         const subtitleText = project.subtitle?.vi || project.subtitle?.en || project.role?.vi || project.role?.en || "Dự án";
-        seoTitle = `${project.title} - ${subtitleText} | Thanh Phuong`;
-        seoDesc = project.description?.vi || project.description?.en || defaultDesc;
-        seoImage = (project.images && project.images.length > 0) ? project.images[0] : (project.image || defaultImage);
+        seoTitle = `${project.title} - ${subtitleText} | Hồ Văn Thanh Phương`;
+        const rawDesc = project.description?.vi || project.description?.en || defaultDesc;
+        seoDesc = rawDesc.replace(/\*\*/g, "").trim();
+        
+        const firstImg = (project.images && project.images.length > 0) ? project.images[0] : (project.image || defaultImage);
+        seoImage = firstImg.startsWith("http") ? firstImg : `${protocol}://${host}${firstImg.startsWith("/") ? "" : "/"}${firstImg}`;
         seoType = "article";
         if (project.tags) {
-          seoKeywords = [...project.tags, "Software Engineering", "Portfolio"];
+          seoKeywords = [...project.tags, "Fullstack Engineer", "Ho Van Thanh Phuong", "Portfolio"];
         }
       }
     }

@@ -1397,6 +1397,40 @@ const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
 
   const project = initialProject || lastProject;
 
+  // Dynamic Client-side SEO Meta Tags
+  useEffect(() => {
+    if (!project) return;
+
+    const firstImage = (project.images && project.images.length > 0) ? project.images[0] : (project.image || "");
+    const subtitleText = project.subtitle?.vi || project.subtitle?.en || project.role?.vi || project.role?.en || "Dự án";
+    const titleText = `${project.title} - ${subtitleText} | Hồ Văn Thanh Phương`;
+    const descText = (project.description?.vi || project.description?.en || "").replace(/\*\*/g, "").trim();
+
+    document.title = titleText;
+
+    const updateMeta = (selector: string, attrKey: string, attrVal: string, contentVal: string) => {
+      let el = document.querySelector(selector);
+      if (!el) {
+        el = document.createElement("meta");
+        el.setAttribute(attrKey, attrVal);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("content", contentVal);
+    };
+
+    updateMeta('meta[name="description"]', 'name', 'description', descText);
+    updateMeta('meta[property="og:title"]', 'property', 'og:title', titleText);
+    updateMeta('meta[property="og:description"]', 'property', 'og:description', descText);
+    updateMeta('meta[property="og:image"]', 'property', 'og:image', firstImage);
+    updateMeta('meta[name="twitter:title"]', 'name', 'twitter:title', titleText);
+    updateMeta('meta[name="twitter:description"]', 'name', 'twitter:description', descText);
+    updateMeta('meta[name="twitter:image"]', 'name', 'twitter:image', firstImage);
+
+    return () => {
+      document.title = "Hồ Văn Thanh Phương | Full-Stack Software Engineer";
+    };
+  }, [project]);
+
   if (!project) {
     return null;
   }
