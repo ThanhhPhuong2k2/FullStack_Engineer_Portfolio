@@ -17,7 +17,7 @@ import TechBackground from "./components/TechBackground";
 import CustomCursor from "./components/CustomCursor";
 import ProjectDetailView from "./components/ProjectDetailView";
 import AllProjectsView from "./components/AllProjectsView";
-import { PROJECTS, getSlug } from "./constants";
+import { PROJECTS, getSlug, findProjectBySlug } from "./constants";
 import { Language, Project } from "./types";
 
 const App: React.FC = () => {
@@ -79,9 +79,9 @@ const App: React.FC = () => {
   useEffect(() => {
     const handlePopState = () => {
       const path = window.location.pathname;
-      if (path.startsWith("/project/")) {
-        const slug = path.replace("/project/", "");
-        const proj = PROJECTS.find((p) => getSlug(p.title) === slug);
+      if (path.startsWith("/project")) {
+        const slug = path.replace(/^\/project\/?/, "").split("?")[0];
+        const proj = findProjectBySlug(slug);
         if (proj) {
           setSelectedProject(proj);
         } else {

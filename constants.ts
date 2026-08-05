@@ -13,6 +13,28 @@ export const getSlug = (title: string): string => {
     .replace(/-+/g, "-"); // collapse multiple -
 };
 
+export const findProjectBySlug = (slug: string): Project | undefined => {
+  if (!slug) return undefined;
+  const cleanSlug = decodeURIComponent(slug).toLowerCase().trim().replace(/^\/project\/?/, "").replace(/\/$/, "");
+  
+  // 1. Direct getSlug match
+  let project = PROJECTS.find((p) => getSlug(p.title) === cleanSlug);
+  if (project) return project;
+
+  // 2. Match without hyphens (e.g. ontoeic vs on-toeic)
+  const noDashSlug = cleanSlug.replace(/-/g, "");
+  project = PROJECTS.find((p) => getSlug(p.title).replace(/-/g, "") === noDashSlug);
+  if (project) return project;
+
+  // 3. Partial or includes match (e.g. risegate matching risegate-asset-tokenization-platform)
+  project = PROJECTS.find((p) => {
+    const pSlug = getSlug(p.title);
+    return cleanSlug.includes(pSlug) || pSlug.includes(cleanSlug);
+  });
+
+  return project;
+};
+
 export const getNavItems = (lang: Language): NavItem[] => [
   { label: lang === 'en' ? 'Home' : 'Trang chủ', href: '#home' },
   { label: lang === 'en' ? 'Projects' : 'Dự án', href: '#experience' },
@@ -93,14 +115,14 @@ export const PROJECTS: Project[] = [
       vi: 'TokenMall là nền tảng thương mại điện tử dành cho các sản phẩm đạt chứng nhận OCOP hoặc các tiêu chuẩn chất lượng tương đương. Hệ thống kết hợp thương mại điện tử với công nghệ blockchain thông qua Voucher NFT, đồng thời hỗ trợ quản lý Seller, Affiliate, nhiều phương thức thanh toán và tích hợp dịch vụ vận chuyển để mang đến trải nghiệm mua sắm hiện đại.'
     },
     tags: ['Kafka', 'VNPay', 'MongoDB', 'Next.js', 'Express.js'],
-    image: 'https://cdn.metadap.io/assets/d641bc04-4ebf-42f8-ba6f-9231a223c9d4/file.png?format=webp&q=75&w=200',
+    image: 'https://res.cloudinary.com/fqqdj43k/image/upload/v1783706210/Thanh_to%C3%A1n_nhi%E1%BB%81u_shop_1_l%E1%BA%A7n_tyjqhd.png',
     link: 'https://www.facebook.com/photo.php?fbid=122124721718526001&set=pb.61565780051514.-2207520000&type=3',
     year: '2024',
     role: { en: 'Fullstack Developer', vi: 'Lập trình viên Fullstack' },
     subtitle: { en: 'E-commerce Platform', vi: 'Nền tảng Thương mại điện tử' },
     color: '#0ea5e9',
     images: [
-      'https://cdn.metadap.io/assets/d641bc04-4ebf-42f8-ba6f-9231a223c9d4/file.png?format=webp&q=75&w=200',
+      'https://res.cloudinary.com/fqqdj43k/image/upload/v1783706210/Thanh_to%C3%A1n_nhi%E1%BB%81u_shop_1_l%E1%BA%A7n_tyjqhd.png',
       'https://framerusercontent.com/images/2WcBfaCxul9lkWllMPkQqPsTFw.png',
       'https://framerusercontent.com/images/1ujBIvH83QntgR4TAQCWsSlKMQM.png',
       'https://framerusercontent.com/images/xpBDFhaftMJqvOOu0Bo3xAY2uko.png',

@@ -3,7 +3,7 @@ import path from "path";
 import fs from "fs";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
-import { getBioData, PROJECTS, getSlug } from "./constants";
+import { getBioData, PROJECTS, getSlug, findProjectBySlug } from "./constants";
 import { Language } from "./types";
 
 const app = express();
@@ -75,10 +75,12 @@ Keep your answers concise, engaging, and professional. If you don't know somethi
 // SEO Route for Project Detail Page
 async function handleSEORequest(req: express.Request, res: express.Response, next: express.NextFunction, viteInstance: any) {
   try {
-    const url = req.originalUrl || req.url;
-    const protocol = req.headers["x-forwarded-proto"] || req.protocol || "https";
-    const host = req.headers["x-forwarded-host"] || req.headers.host || "localhost:3000";
-    const fullUrl = `${protocol}://${host}${url}`;
+    const rawUrl = req.originalUrl || req.url || "";
+    const urlPath = rawUrl.split("?")[0];
+    const rawHost = req.headers["x-forwarded-host"] || req.headers.host || "";
+    const host = (Array.isArray(rawHost) ? rawHost[0] : rawHost.split(",")[0]).trim() || "localhost:3000";
+    const protocol = (req.headers["x-forwarded-proto"] as string) || "https";
+    const fullUrl = `${protocol}://${host}${urlPath}`;
 
     const defaultTitle = "Thanh Phuong | Full-Stack Software Engineer";
     const defaultDesc = "Portfolio of Thanh Phuong, a Full-Stack Software Engineer with experience building scalable web applications using React, Next.js, Node.js, TypeScript, and modern backend technologies.";
@@ -90,9 +92,9 @@ async function handleSEORequest(req: express.Request, res: express.Response, nex
     let seoType = "website";
     let seoKeywords: string[] = ["Full-Stack", "Software Engineer", "React", "Next.js", "Node.js", "TypeScript"];
 
-    if (url.startsWith("/project/")) {
-      const slug = url.split("?")[0].replace("/project/", "");
-      const project = PROJECTS.find((p) => getSlug(p.title) === slug);
+    if (urlPath.startsWith("/project/")) {
+      const slug = urlPath.replace(/^\/project\/?/, "").replace(/\/$/, "");
+      const project = findProjectBySlug(slug);
 
       if (project) {
         const subtitleText = project.subtitle?.vi || project.subtitle?.en || project.role?.vi || project.role?.en || "Dự án";
@@ -127,7 +129,7 @@ async function handleSEORequest(req: express.Request, res: express.Response, nex
 
     if (viteInstance && process.env.NODE_ENV !== "production") {
       try {
-        rawHtml = await viteInstance.transformIndexHtml(url, rawHtml);
+        rawHtml = await viteInstance.transformIndexHtml(rawUrl, rawHtml);
       } catch (e) {
         console.error("Error running transformIndexHtml:", e);
       }
@@ -147,7 +149,7 @@ async function handleSEORequest(req: express.Request, res: express.Response, nex
 
     <!-- Open Graph / Facebook / Zalo -->
     <meta property="og:type" content="${seoType}">
-    <meta property="og:site_name" content="Thanh Phuong | Full-Stack Software Engineer">
+    <meta property="og:site_name" content="Hồ Văn Thanh Phương | Full-Stack Engineer">
     <meta property="og:title" content="${safeTitle}">
     <meta property="og:description" content="${safeDesc}">
     <meta property="og:image" content="${safeImage}">
@@ -184,14 +186,14 @@ async function handleSEORequest(req: express.Request, res: express.Response, nex
 `;
 
     let cleanHtml = rawHtml
-      .replace(/<title>.*?<\/title>/gi, "")
-      .replace(/<meta\s+name="description"\s+content=".*?"\s*\/?>/gi, "")
-      .replace(/<meta\s+property="og:[^"]+"\s+content=".*?"\s*\/?>/gi, "")
-      .replace(/<meta\s+name="twitter:[^"]+"\s+content=".*?"\s*\/?>/gi, "")
-      .replace(/<meta\s+property="twitter:[^"]+"\s+content=".*?"\s*\/?>/gi, "")
-      .replace(/<link\s+rel="canonical"\s+href=".*?"\s*\/?>/gi, "");
+      .replace(/<title>[\s\S]*?<\/title>/gi, "")
+      .replace(/<meta\s+name="description"[\s\S]*?>/gi, "")
+      .replace(/<meta\s+property="og:[\s\S]*?>/gi, "")
+      .replace(/<meta\s+name="twitter:[\s\S]*?>/gi, "")
+      .replace(/<meta\s+property="twitter:[\s\S]*?>/gi, "")
+      .replace(/<link\s+rel="canonical"[\s\S]*?>/gi, "");
 
-    const finalHtml = cleanHtml.replace(/<\/head>/i, () => `${seoMetaBlock}\n</head>`);
+    const finalHtml = cleanHtml.replace(/<head>/i, `<head>\n${seoMetaBlock}`);
 
     res.setHeader("Content-Type", "text/html");
     return res.status(200).send(finalHtml);
@@ -205,7 +207,7 @@ async function startServer() {
   let viteInstance: any = null;
 
   // 1. Specific SEO Route for Project Detail Pages
-  app.get("/project/:slug", (req, res, next) => handleSEORequest(req, res, next, viteInstance));
+  app.get(/^\/project(?:\/.*)?$/, (req, res, next) => handleSEORequest(req, res, next, viteInstance));
 
   // 2. Vite Middleware for Development or Static Files for Production
   if (process.env.NODE_ENV !== "production") {
