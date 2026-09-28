@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { getNavItems } from '../constants';
+import { getNavItems, CV_URL } from '../constants';
 import { Language } from '../types';
 
 interface NavbarProps {
@@ -142,7 +142,7 @@ const Navbar: React.FC<NavbarProps> = ({ lang, toggleLanguage, onCloseDetail }) 
           <div className="mx-2 h-6 w-px bg-white/10" />
           
           <a
-            href="https://drive.google.com/file/d/14vyxC-Xf4PQyyjBmUueAyC7Zd1MY1wF1/view"
+            href={CV_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-black uppercase tracking-wider text-sky-400 bg-sky-500/10 hover:bg-sky-500 hover:text-white border border-sky-500/30 rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(56,189,248,0.2)]"

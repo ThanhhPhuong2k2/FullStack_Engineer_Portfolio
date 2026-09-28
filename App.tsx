@@ -17,13 +17,29 @@ import TechBackground from "./components/TechBackground";
 import CustomCursor from "./components/CustomCursor";
 import ProjectDetailView from "./components/ProjectDetailView";
 import AllProjectsView from "./components/AllProjectsView";
-import { PROJECTS, getSlug, findProjectBySlug } from "./constants";
+import { PROJECTS, getSlug, findProjectBySlug, CV_URL } from "./constants";
 import { Language, Project } from "./types";
 
+const getInitialRouteState = (): { project: Project | null; viewAll: boolean } => {
+  if (typeof window === "undefined") return { project: null, viewAll: false };
+  const path = window.location.pathname;
+  if (path.startsWith("/project")) {
+    const slug = path.replace(/^\/project\/?/, "").split("?")[0];
+    const proj = findProjectBySlug(slug);
+    if (proj) {
+      return { project: proj, viewAll: false };
+    }
+  } else if (path === "/projects") {
+    return { project: null, viewAll: true };
+  }
+  return { project: null, viewAll: false };
+};
+
 const App: React.FC = () => {
+  const [initialRoute] = useState(() => getInitialRouteState());
   const [lang, setLang] = useState<Language>("en");
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [viewAllProjects, setViewAllProjects] = useState<boolean>(false);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(initialRoute.project);
+  const [viewAllProjects, setViewAllProjects] = useState<boolean>(initialRoute.viewAll);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
 
@@ -97,7 +113,6 @@ const App: React.FC = () => {
     };
 
     window.addEventListener("popstate", handlePopState);
-    handlePopState(); // Handle initial route load
 
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
@@ -191,7 +206,7 @@ const App: React.FC = () => {
         }
       />
 
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" initial={false}>
         {!selectedProject ? (
           viewAllProjects ? (
             <motion.div
@@ -384,7 +399,7 @@ const App: React.FC = () => {
 
                         <div className="mt-8 pl-8 flex flex-wrap items-center gap-4">
                           <a
-                            href="https://drive.google.com/file/d/14vyxC-Xf4PQyyjBmUueAyC7Zd1MY1wF1/view"
+                            href={CV_URL}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-3 px-8 py-3.5 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-black rounded-2xl shadow-[0_0_30px_rgba(56,189,248,0.3)] hover:shadow-[0_0_40px_rgba(56,189,248,0.5)] hover:scale-105 active:scale-95 transition-all text-sm uppercase tracking-wider group"
@@ -453,8 +468,14 @@ const App: React.FC = () => {
                     </motion.h2>
                   </div>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-                    {PROJECTS.filter((p) => p.title !== "VIDE")
-                      .slice(0, 4)
+                    {[
+                      "TokenMall",
+                      "Risegate – Asset Tokenization Platform",
+                      "Ôn TOEIC",
+                      "Thuc Pham Quang Da",
+                    ]
+                      .map((t) => PROJECTS.find((p) => p.title === t))
+                      .filter((p): p is Project => Boolean(p))
                       .map((project, idx) => (
                         <ProjectCard
                           key={project.title}

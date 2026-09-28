@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Language } from '../types';
+import { CV_URL } from '../constants';
 
 interface ContactSectionProps {
   lang: Language;
@@ -11,7 +12,7 @@ const CONTACT_DATA = {
   email: "thanhphuong212002@gmail.com",
   linkedin: "https://www.linkedin.com/in/ph%C6%B0%C6%A1ng-thanh-65240b2b8/",
   github: "https://github.com/ThanhhPhuong2k2",
-  cv: "https://drive.google.com/file/d/14vyxC-Xf4PQyyjBmUueAyC7Zd1MY1wF1/view"
+  cv: CV_URL
 };
 
 const ContactCard: React.FC<{ 

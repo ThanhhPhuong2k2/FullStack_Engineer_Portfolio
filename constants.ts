@@ -1,6 +1,8 @@
 
 import { NavItem, Skill, Project, Language } from './types';
 
+export const CV_URL = "https://drive.google.com/file/d/1Ewc-RJCS7p8-bevq3UQ8HfnzvWln5rVV/view";
+
 export const getSlug = (title: string): string => {
   return title
     .toLowerCase()
@@ -17,9 +19,26 @@ export const findProjectBySlug = (slug: string): Project | undefined => {
   if (!slug) return undefined;
   const cleanSlug = decodeURIComponent(slug).toLowerCase().trim().replace(/^\/project\/?/, "").replace(/\/$/, "");
   
-  // Direct aliases (e.g. onteic, ontoeic, verify-document)
+  // Direct aliases (e.g. onteic, ontoeic, verify-document, lani)
   if (cleanSlug === "onteic" || cleanSlug === "on-teic" || cleanSlug === "ontoeic" || cleanSlug === "on-toeic") {
     const p = PROJECTS.find((proj) => proj.title.toLowerCase().includes("toeic"));
+    if (p) return p;
+  }
+  if (cleanSlug === "lani" || cleanSlug === "lanivn" || cleanSlug === "lani-vn") {
+    const p = PROJECTS.find((proj) => proj.title.toLowerCase() === "lani");
+    if (p) return p;
+  }
+  if (cleanSlug === "bigbee" || cleanSlug === "big-bee") {
+    const p = PROJECTS.find((proj) => proj.title.toLowerCase() === "bigbee");
+    if (p) return p;
+  }
+  if (
+    cleanSlug === "admin-system-collection" ||
+    cleanSlug === "adminsystemcollection" ||
+    cleanSlug === "admin-system" ||
+    cleanSlug === "admin-collection"
+  ) {
+    const p = PROJECTS.find((proj) => proj.title.toLowerCase().includes("admin system"));
     if (p) return p;
   }
 
@@ -195,6 +214,41 @@ export const PROJECTS: Project[] = [
         'Thông báo ngưỡng tồn kho thấp tự động và hệ thống đặt hàng thông minh',
         'Trang tổng quan bảo mật cho nhà bán hàng quản lý nhập, xuất và phân tích hàng ngày',
         'Truy vấn PostgreSQL linh hoạt và mạnh mẽ mang lại báo cáo thời gian thực nhanh chóng'
+      ]
+    }
+  },
+  {
+    title: 'LANI',
+    description: {
+      en: 'LANI is a multifunctional e-commerce and training platform with full bilingual support (Vietnamese - English). The system offers high-quality product shopping, online training course enrollment, user authentication (Sign In / Sign Up), customer review & feedback workflows, and secure online payment processing.',
+      vi: 'LANI là nền tảng thương mại điện tử và đào tạo chuyên nghiệp đa chức năng, hỗ trợ song ngữ (Việt - Anh). Hệ thống cung cấp giải pháp mua sắm các loại sản phẩm chất lượng cao, đăng ký khóa học đào tạo trực tuyến, tích hợp hệ thống xác thực tài khoản (đăng nhập / đăng ký), đánh giá phản hồi (feedback) khách hàng và thanh toán trực tuyến bảo mật, tiện lợi.'
+    },
+    tags: ['Next.js', 'TypeScript', 'NestJS', 'PostgreSQL', 'Tailwind CSS', 'VNPay'],
+    image: 'https://res.cloudinary.com/fqqdj43k/image/upload/v1790616392/Screenshot_2026-09-29_002522_ysyilo.png',
+    link: 'https://www.lanivn.com/vi',
+    year: '2025',
+    role: { en: 'Fullstack Developer', vi: 'Lập trình viên Fullstack' },
+    subtitle: { en: 'E-Commerce & Training Platform', vi: 'Nền tảng Thương mại điện tử & Đào tạo' },
+    color: '#06b6d4',
+    images: [
+      'https://res.cloudinary.com/fqqdj43k/image/upload/v1790616392/Screenshot_2026-09-29_002522_ysyilo.png'
+    ],
+    features: {
+      en: [
+        'Modern, high-performance interface with full bilingual localization (Vietnamese & English i18n)',
+        'Secure user authentication architecture with streamlined sign-in, registration, and role management',
+        'Versatile e-commerce product catalog with interactive shopping cart, checkout, and order tracking',
+        'Professional training course enrollment portal with detailed syllabus, scheduling, and instant sign-up',
+        'Interactive customer review and feedback system to boost user engagement and product transparency',
+        'Seamless online payment integration ensuring fast, encrypted checkout and automated transaction reconciliation'
+      ],
+      vi: [
+        'Giao diện hiện đại, tối ưu SEO và hỗ trợ đa ngôn ngữ song ngữ Việt - Anh (i18n)',
+        'Hệ thống quản lý xác thực người dùng bảo mật cao với chức năng đăng ký, đăng nhập và phân quyền',
+        'Danh mục thương mại điện tử đa dạng với giỏ hàng động, thanh toán và xử lý đơn hàng trực tuyến',
+        'Cổng đăng ký khóa học đào tạo chuyên nghiệp với lịch học, thông tin chi tiết và ghi danh tức thì',
+        'Hệ thống thu thập đánh giá, phản hồi (feedback) khách hàng trực quan và quản lý tương tác',
+        'Tích hợp cổng thanh toán trực tuyến bảo mật, hỗ trợ chuyển khoản và kiểm tra giao dịch tự động'
       ]
     }
   },
@@ -472,6 +526,74 @@ export const PROJECTS: Project[] = [
         'Triển khai các hiệu ứng chuyển động và tương tác mượt màng bằng Framer Motion nhằm nâng cao trải nghiệm người dùng.',
         'Tối ưu hóa hiệu suất trang web và cấu hình SEO giúp cải thiện thứ hạng và khả năng tìm kiếm.',
         'Chuyển đổi các yêu cầu sản phẩm và ý tưởng thiết kế thành giao diện trực quan và thân thiện với người dùng.'
+      ]
+    }
+  },
+  {
+    title: 'BigBee',
+    description: {
+      en: 'BigBee is a creative brand that combines media production, studio services, and English education into one modern digital presence. The project was designed to present the brand in a more professional, engaging, and approachable way while clearly communicating its creative and educational value.',
+      vi: 'BigBee là thương hiệu sáng tạo kết hợp giữa sản xuất truyền thông, dịch vụ phòng thu (studio) và giáo dục tiếng Anh trong một diện mạo kỹ thuật số hiện đại. Dự án được thiết kế nhằm giới thiệu thương hiệu một cách chuyên nghiệp, thu hút và gần gũi, đồng thời truyền tải rõ nét các giá trị sáng tạo và giáo dục.'
+    },
+    tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'React.js'],
+    image: 'https://framerusercontent.com/images/ei8RMX7xPpQUkdcfE8Rk9hHvQ.png?width=1776&height=1288',
+    year: '2024',
+    role: { en: 'Frontend Developer', vi: 'Lập trình viên Frontend' },
+    subtitle: { en: 'Creative Media & Education Brand', vi: 'Thương hiệu Truyền thông Sáng tạo & Đào tạo' },
+    color: '#f59e0b',
+    images: [
+      'https://framerusercontent.com/images/ei8RMX7xPpQUkdcfE8Rk9hHvQ.png?width=1776&height=1288',
+      'https://framerusercontent.com/images/gVEnC3kISinkkzFp2FHGJVj0.png?width=1776&height=1288',
+      'https://framerusercontent.com/images/8YZx271UT28vPLr5N8MwJ7krlM.png'
+    ],
+    features: {
+      en: [
+        'Modern digital brand identity showcasing multimedia production and creative studio services',
+        'Interactive English education portal highlighting learning programs and engaging teaching workflows',
+        'Smooth scroll animations and interactive responsive layouts powered by Framer Motion and Tailwind CSS',
+        'Optimized media asset delivery for high-resolution visual storytelling and video showcases',
+        'Mobile-first responsive architecture delivering seamless user experience across all devices'
+      ],
+      vi: [
+        'Nhận diện thương hiệu số hiện đại giới thiệu năng lực sản xuất truyền thông đa phương tiện và dịch vụ phòng thu',
+        'Cổng thông tin đào tạo tiếng Anh tương tác nổi bật các khóa học và phương pháp giảng dạy lôi cuốn',
+        'Hiệu ứng chuyển động mượt mà và bố cục đáp ứng cao cấp vận hành bởi Framer Motion và Tailwind CSS',
+        'Tối ưu hóa tải tài nguyên đa phương tiện chất lượng cao phục vụ hình ảnh và video sắc nét',
+        'Kiến trúc responsive ưu tiên di động mang lại trải nghiệm mượt mà trên mọi thiết bị'
+      ]
+    }
+  },
+  {
+    title: 'Admin System Collection',
+    description: {
+      en: 'Admin System Collection is a centralized project that brings together multiple admin interfaces developed across different products and business cases. The goal of this project was to create a more consistent, efficient, and scalable internal system experience by organizing complex workflows, data management tools, and operational dashboards into a clear and usable design structure.',
+      vi: 'Admin System Collection là dự án tập trung quy tụ nhiều hệ thống giao diện quản trị (Admin Dashboard) được phát triển qua nhiều sản phẩm và mô hình nghiệp vụ khác nhau. Mục tiêu của dự án là kiến tạo một trải nghiệm hệ thống nội bộ nhất quán, hiệu năng cao và có khả năng mở rộng bằng cách chuẩn hóa các luồng nghiệp vụ phức tạp, công cụ quản lý dữ liệu và bảng điều khiển vận hành vào một cấu trúc thiết kế rõ ràng và trực quan.'
+    },
+    tags: ['React.js', 'Next.js', 'NestJS', 'PostgreSQL', 'Ant Design', 'Tailwind CSS', 'Redis', 'Kafka'],
+    image: 'https://framerusercontent.com/images/DLJUgRIaXBJC4RYi0svCJKjSI.png',
+    year: '2024 – 2025',
+    role: { en: 'Fullstack Developer / System Architect', vi: 'Lập trình viên Fullstack / Kiến trúc hệ thống' },
+    subtitle: { en: 'Enterprise Operations & Admin Dashboards Hub', vi: 'Hệ thống Bảng Quản trị & Điều hành Doanh nghiệp' },
+    color: '#6366f1',
+    images: [
+      'https://framerusercontent.com/images/DLJUgRIaXBJC4RYi0svCJKjSI.png'
+    ],
+    features: {
+      en: [
+        'Centralized Identity Management Hub with strict JWT, 2FA, and granular multi-tier Role-Based Access Control (RBAC)',
+        'Top-up & Billing Operations Dashboard supporting wallet balance reconciliations, transaction approvals, and audit trails',
+        'Omnichannel Notification Center managing push notifications, real-time WebSocket alerts, email campaigns, and SMS dispatch',
+        'Real-time Operational Analytics with high-density data tables, metric summaries, and automated system logs inspection',
+        'Comprehensive User Management allowing instant role provisioning, session revocation, and security audit enforcement',
+        'Modular, component-driven design system enabling rapid deployment across diverse enterprise web products'
+      ],
+      vi: [
+        'Hệ thống quản lý định danh tập trung (Identity Management) với cơ chế JWT, 2FA và phân quyền (RBAC) đa cấp chặt chẽ',
+        'Trung tâm điều hành nạp tiền (Top-up & Billing Operations) với đối soát số dư ví, duyệt giao dịch và kiểm toán dòng tiền',
+        'Hệ thống quản lý thông báo đa kênh (Notification Hub) hỗ trợ đẩy tin real-time qua WebSockets, Email và SMS',
+        'Bảng điều khiển trực quan hóa dữ liệu (Operational Dashboards) với biểu đồ tăng trưởng, trạng thái hệ thống và log sự kiện',
+        'Công cụ quản lý người dùng, khóa tài khoản, phân chia vai trò và kiểm soát quyền truy cập chi tiết đến từng API',
+        'Kiến trúc mô-đun hóa micro-frontend / reusable components giúp triển khai nhanh cho nhiều dự án doanh nghiệp'
       ]
     }
   },

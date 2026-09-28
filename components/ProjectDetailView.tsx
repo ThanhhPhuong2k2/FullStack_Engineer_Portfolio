@@ -1378,6 +1378,424 @@ const PROJECT_CUSTOM_DATA: Record<
       },
     ],
   },
+  LANI: {
+    metrics: {
+      type: {
+        en: "E-Commerce & Training Platform",
+        vi: "Nền tảng Thương mại điện tử & Đào tạo",
+      },
+      status: { en: "Production", vi: "Production" },
+      duration: { en: "2025 to present", vi: "2025 đến hiện tại" },
+      role: { en: "Full Stack Developer", vi: "Lập trình viên Full Stack" },
+      teamSize: { en: "3 members", vi: "3 thành viên" },
+    },
+    techStack: {
+      frontend: [
+        "• Next.js + TypeScript",
+        "• Tailwind CSS",
+        "• i18n Bilingual Support",
+        "• React Query",
+      ],
+      backend: [
+        "• NestJS",
+        "• RESTful APIs",
+        "• Node.js",
+        "• JWT Authentication",
+      ],
+      database: [
+        "• PostgreSQL",
+        "• Prisma ORM",
+        "• Optimized Queries",
+      ],
+      architecture: [
+        "• Role-Based Access Control (RBAC)",
+        "• MVC Architecture",
+        "• Server-Side Rendering (SSR)",
+      ],
+      integration: [
+        "• Online Payment Gateway (VNPay)",
+        "• Course Enrollment Portal",
+        "• Interactive Feedback Engine",
+        "• Cloudinary Media CDN",
+      ],
+    },
+    responsibilities: [
+      {
+        title: { en: "Bilingual Localization (i18n)", vi: "Hỗ trợ Song ngữ (i18n)" },
+        desc: {
+          en: "Architected seamless Vietnamese and English localization across all interfaces, content, and catalog items.",
+          vi: "Xây dựng hệ thống đa ngôn ngữ song ngữ Việt - Anh mượt mà cho toàn bộ giao diện, nội dung và danh mục.",
+        },
+        accent: "sky",
+      },
+      {
+        title: { en: "Authentication & Security", vi: "Đăng nhập, Đăng ký & Bảo mật" },
+        desc: {
+          en: "Implemented secure user registration, login workflows, JWT session management, and RBAC authorization.",
+          vi: "Phát triển quy trình đăng ký, đăng nhập tài khoản, quản lý phiên với JWT và phân quyền người dùng (RBAC).",
+        },
+        accent: "indigo",
+      },
+      {
+        title: { en: "Multi-Category E-Commerce", vi: "Thương mại điện tử Đa dạng" },
+        desc: {
+          en: "Engineered high-converting product catalog, real-time cart management, and seamless multi-step checkout.",
+          vi: "Phát triển danh mục sản phẩm đa dạng, quản lý giỏ hàng thời gian thực và quy trình đặt hàng thuận tiện.",
+        },
+        accent: "emerald",
+      },
+      {
+        title: { en: "Training Course Enrollment", vi: "Đăng ký Khóa học Đào tạo" },
+        desc: {
+          en: "Built comprehensive course showcase pages with curriculum details, schedule selection, and online booking.",
+          vi: "Xây dựng trang giới thiệu khóa học, chi tiết lộ trình đào tạo, chọn lịch học và đăng ký ghi danh trực tuyến.",
+        },
+        accent: "amber",
+      },
+      {
+        title: { en: "Customer Feedback & Reviews", vi: "Đánh giá & Phản hồi Khách hàng" },
+        desc: {
+          en: "Developed interactive customer rating and review system with moderation and instant testimonial display.",
+          vi: "Xây dựng hệ thống gửi phản hồi, đánh giá sao trải nghiệm khách hàng trực quan và tăng độ uy tín thương hiệu.",
+        },
+        accent: "rose",
+      },
+      {
+        title: { en: "Online Payment Processing", vi: "Tích hợp Thanh toán Trực tuyến" },
+        desc: {
+          en: "Integrated secure online payment gateway with instant IPN callback, transaction tracking, and invoice logging.",
+          vi: "Tích hợp cổng thanh toán trực tuyến bảo mật, xử lý giao dịch tức thời và tự động đối soát đơn hàng.",
+        },
+        accent: "teal",
+      },
+    ],
+    backendContributions: [
+      {
+        en: "Engineered scalable RESTful API endpoints using NestJS for auth, products, course bookings, reviews, and payments.",
+        vi: "Phát triển hệ thống RESTful API hiệu năng cao bằng NestJS cho xác thực, sản phẩm, đăng ký khóa học, đánh giá và thanh toán.",
+      },
+      {
+        en: "Designed robust PostgreSQL database models with Prisma ORM for relational catalog and enrollment data integrity.",
+        vi: "Thiết kế mô hình cơ sở dữ liệu PostgreSQL chuẩn hóa với Prisma ORM đảm bảo tính toàn vẹn dữ liệu đơn hàng và học viên.",
+      },
+      {
+        en: "Implemented secure payment webhook listeners and automated order status update pipelines.",
+        vi: "Xây dựng cơ chế webhook nhận tín hiệu thanh toán và tự động cập nhật trạng thái đơn hàng thời gian thực.",
+      },
+      {
+        en: "Built validation layers and rate limiting to prevent spam feedback submissions and brute-force login attempts.",
+        vi: "Thiết lập lớp kiểm thực dữ liệu đầu vào và giới hạn tần suất gửi yêu cầu để ngăn chặn spam feedback và dò mật khẩu.",
+      },
+    ],
+    frontendContributions: [
+      {
+        en: "Designed responsive, high-fidelity corporate UI supporting instant English and Vietnamese language switching.",
+        vi: "Thiết kế giao diện người dùng hiện đại, tương thích hoàn hảo mọi thiết bị và chuyển đổi ngôn ngữ Việt - Anh tức thì.",
+      },
+      {
+        en: "Built interactive course registration forms, product showcase filters, dynamic cart, and customer review modules.",
+        vi: "Phát triển form đăng ký khóa học, bộ lọc danh mục sản phẩm, giỏ hàng tương tác và khối đánh giá của khách hàng.",
+      },
+      {
+        en: "Optimized Core Web Vitals, SSR caching, and image loading for top-tier Lighthouse performance and SEO scores.",
+        vi: "Tối ưu hóa chỉ số Core Web Vitals, cơ chế kết xuất SSR và tải tài nguyên hình ảnh giúp đạt hiệu suất Lighthouse cao.",
+      },
+    ],
+    challenges: [
+      {
+        title: {
+          en: "Unified Bilingual Experience for E-Commerce & Training",
+          vi: "Trải nghiệm Song ngữ Thống nhất cho Thương mại điện tử & Đào tạo",
+        },
+        color: "teal",
+        items: [
+          {
+            en: "Challenge: Integrating two distinct business workflows (physical/digital retail products vs. structured educational training courses) into a single cohesive bilingual web platform without confusing users.",
+            vi: "Thử thách: Kết hợp hài hòa hai luồng nghiệp vụ khác biệt (bán sản phẩm thương mại và tuyển sinh các khóa học đào tạo) trên cùng một nền tảng hỗ trợ song ngữ mà vẫn giữ được sự tinh gọn, dễ dùng.",
+          },
+          {
+            en: "Solution: Architected modular components, standardized internationalization schemas (i18n), and created dedicated customer checkout/registration pipelines tailored to each product and course category.",
+            vi: "Giải pháp: Thiết kế kiến trúc component dạng mô-đun, chuẩn hóa cấu trúc dữ liệu đa ngôn ngữ và tạo luồng thanh toán / ghi danh riêng biệt phù hợp cho từng loại sản phẩm và khóa đào tạo.",
+          },
+          {
+            en: "Achievement: Successfully deployed LANI into production at lanivn.com, delivering a modern, trustworthy digital presence with complete bilingual accessibility.",
+            vi: "Thành tựu: Triển khai thành công nền tảng LANI lên môi trường production tại lanivn.com, mang lại diện mạo số hiện đại, chuyên nghiệp với khả năng tiếp cận song ngữ hoàn chỉnh.",
+          },
+        ],
+      },
+    ],
+  },
+  BigBee: {
+    metrics: {
+      type: {
+        en: "Creative Media & Education Brand",
+        vi: "Thương hiệu Truyền thông Sáng tạo & Đào tạo",
+      },
+      status: { en: "Production", vi: "Production" },
+      duration: { en: "2024", vi: "2024" },
+      role: { en: "Frontend Developer", vi: "Lập trình viên Frontend" },
+      teamSize: { en: "2 members", vi: "2 thành viên" },
+    },
+    techStack: {
+      frontend: [
+        "• Next.js + TypeScript",
+        "• Tailwind CSS",
+        "• Framer Motion",
+        "• React.js",
+      ],
+      backend: [
+        "• Node.js",
+        "• REST APIs",
+        "• Dynamic Content CMS",
+      ],
+      database: [
+        "• MongoDB",
+        "• Optimized Media Storage",
+      ],
+      architecture: [
+        "• Component-Driven Architecture",
+        "• Responsive Grid System",
+        "• Client Animation Engine",
+      ],
+      integration: [
+        "• High-Resolution Media Streaming",
+        "• Social Media Channels",
+        "• Inquiry & Booking Forms",
+      ],
+    },
+    responsibilities: [
+      {
+        title: { en: "Visual Identity & Layouts", vi: "Định vị Nhận diện & Bố cục" },
+        desc: {
+          en: "Created modern digital presence combining media production, studio spaces, and English education.",
+          vi: "Xây dựng nhận diện thương hiệu số hiện đại kết hợp sản xuất truyền thông, dịch vụ phòng thu và giáo dục tiếng Anh.",
+        },
+        accent: "amber",
+      },
+      {
+        title: { en: "Motion & Micro-Interactions", vi: "Hiệu ứng Động & Chuyển cảnh" },
+        desc: {
+          en: "Engineered engaging scroll interactions, transitions, and hover effects using Framer Motion.",
+          vi: "Thiết kế các hiệu ứng cuộn trang, chuyển động mượt mà và tương tác vi mô cuốn hút bằng Framer Motion.",
+        },
+        accent: "sky",
+      },
+      {
+        title: { en: "Course & Studio Portals", vi: "Cổng Giới thiệu Khóa học & Studio" },
+        desc: {
+          en: "Structured information hierarchy for studio booking inquiries and English training programs.",
+          vi: "Tổ chức phân cấp nội dung chuyên nghiệp cho cổng đặt lịch phòng thu và chương trình đào tạo tiếng Anh.",
+        },
+        accent: "indigo",
+      },
+      {
+        title: { en: "Responsive Design System", vi: "Thiết kế Tương thích Đa thiết bị" },
+        desc: {
+          en: "Built a fully responsive layout with seamless performance across smartphones, tablets, and desktops.",
+          vi: "Xây dựng giao diện responsive thích ứng linh hoạt, hiển thị sắc nét trên cả điện thoại, máy tính bảng và desktop.",
+        },
+        accent: "emerald",
+      },
+      {
+        title: { en: "Performance & Media Loading", vi: "Tối ưu Tải Đa phương tiện" },
+        desc: {
+          en: "Optimized high-resolution images, responsive picture tags, and asynchronous style assets.",
+          vi: "Tối ưu hóa hình ảnh độ nét cao, trì hoãn tải và nạp tài nguyên thông minh giúp tăng tốc độ mở trang.",
+        },
+        accent: "rose",
+      },
+    ],
+    backendContributions: [
+      {
+        en: "Configured lightweight API routes for lead generation and booking form inquiries.",
+        vi: "Thiết lập các tuyến API tiếp nhận thông tin liên hệ và yêu cầu đặt lịch dịch vụ phòng thu.",
+      },
+      {
+        en: "Organized structured data schemas for studio portfolios and English training modules.",
+        vi: "Tổ chức cấu trúc dữ liệu cho danh mục dự án studio và các gói đào tạo tiếng Anh.",
+      },
+    ],
+    frontendContributions: [
+      {
+        en: "Built reusable UI components with TypeScript and Tailwind CSS for rapid scaling.",
+        vi: "Phát triển các component giao diện có thể tái sử dụng bằng TypeScript và Tailwind CSS.",
+      },
+      {
+        en: "Crafted interactive sliders, video showcase grids, and visual service highlight sections.",
+        vi: "Thiết kế slider tương tác, lưới video giới thiệu sản phẩm truyền thông và khối dịch vụ nổi bật.",
+      },
+      {
+        en: "Achieved high Lighthouse accessibility, SEO, and visual best practices scores.",
+        vi: "Đạt điểm số cao về khả năng tiếp cận (Accessibility), SEO và trải nghiệm giao diện người dùng trên Lighthouse.",
+      },
+    ],
+    challenges: [
+      {
+        title: {
+          en: "Harmonizing Media Production with Educational Values",
+          vi: "Hài hòa giữa Sản xuất Truyền thông và Giá trị Giáo dục",
+        },
+        color: "amber",
+        items: [
+          {
+            en: "Challenge: Communicating two diverse facets of BigBee (high-energy media production studio vs. trustworthy English education) within a single cohesive digital identity.",
+            vi: "Thử thách: Truyền tải đồng thời hai mảng hoạt động khác nhau của BigBee (phòng thu sản xuất truyền thông năng động và trung tâm tiếng Anh uy tín) trong cùng một nhận diện thương hiệu số thống nhất.",
+          },
+          {
+            en: "Solution: Designed clear thematic sections with complementary color palettes, modern typography, and structured navigation guiding visitors naturally between services.",
+            vi: "Giải pháp: Thiết kế các phân vùng nội dung rõ ràng với bảng màu bổ trợ, kiểu chữ hiện đại và hệ thống điều hướng trực quan giúp người dùng dễ dàng khám phá từng dịch vụ.",
+          },
+        ],
+      },
+    ],
+  },
+  "Admin System Collection": {
+    metrics: {
+      type: {
+        en: "Internal Enterprise Systems",
+        vi: "Hệ thống Quản trị Doanh nghiệp Nội bộ",
+      },
+      status: { en: "Production", vi: "Production" },
+      duration: { en: "2024 to 2025", vi: "2024 đến 2025" },
+      role: { en: "Fullstack Developer / System Architect", vi: "Lập trình viên Fullstack / Kiến trúc hệ thống" },
+      teamSize: { en: "8 members", vi: "8 thành viên" },
+    },
+    techStack: {
+      frontend: [
+        "• React.js + Next.js + TypeScript",
+        "• Ant Design + Tailwind CSS",
+        "• TanStack Table & Virtualization",
+        "• Recharts & Data Analytics",
+      ],
+      backend: [
+        "• NestJS / Express.js",
+        "• RESTful & WebSocket APIs",
+        "• Microservices Architecture",
+        "• JWT & Multi-Factor Auth (2FA)",
+      ],
+      database: [
+        "• PostgreSQL & MongoDB",
+        "• Prisma ORM",
+        "• Redis Cache & Session Store",
+      ],
+      architecture: [
+        "• Hierarchical RBAC & Audit Trails",
+        "• Apache Kafka Event Pipelines",
+        "• Centralized Log Aggregator",
+      ],
+      integration: [
+        "• Real-time Notification Engine",
+        "• Wallet Top-up & Payment Ledgers",
+        "• Identity Single Sign-On (SSO)",
+        "• Automated Reconciliation Webhooks",
+      ],
+    },
+    responsibilities: [
+      {
+        title: { en: "Centralized Identity (IAM)", vi: "Hệ thống Quản lý Định danh (IAM)" },
+        desc: {
+          en: "Engineered single sign-on (SSO), JWT session lifecycles, and granular multi-level RBAC permission matrices.",
+          vi: "Xây dựng hệ thống đăng nhập tập trung, kiểm soát vòng đời token JWT và ma trận phân quyền RBAC đa cấp.",
+        },
+        accent: "indigo",
+      },
+      {
+        title: { en: "Top-up & Financial Operations", vi: "Hệ thống Nạp tiền & Quản lý Ví" },
+        desc: {
+          en: "Built administrative balance adjustments, deposit approvals, automated bank ledger reconciliations, and audit trails.",
+          vi: "Phát triển cổng duyệt nạp tiền, điều chỉnh số dư, đối soát tự động với sổ cái ngân hàng và lưu vết kiểm toán.",
+        },
+        accent: "emerald",
+      },
+      {
+        title: { en: "Omnichannel Notification Hub", vi: "Trung tâm Thông báo Đa kênh" },
+        desc: {
+          en: "Designed dynamic notification workflows delivering instant alerts across WebSockets, Email, and SMS dispatchers.",
+          vi: "Thiết kế luồng thông báo thời gian thực truyền phát qua WebSockets, Email thông báo và tin nhắn SMS.",
+        },
+        accent: "sky",
+      },
+      {
+        title: { en: "High-Density Data Dashboards", vi: "Bảng Điều khiển Dữ liệu Mật độ cao" },
+        desc: {
+          en: "Built virtualized data tables, advanced multi-column filtering, bulk status updates, and Excel/CSV data exports.",
+          vi: "Xây dựng bảng dữ liệu ảo hóa, bộ lọc đa điều kiện nâng cao, cập nhật trạng thái hàng loạt và xuất dữ liệu Excel/CSV.",
+        },
+        accent: "purple",
+      },
+      {
+        title: { en: "Audit Logging & Security Enforcement", vi: "Ghi Log Kiểm toán & Bảo mật" },
+        desc: {
+          en: "Implemented immutable administrative activity logs, IP tracking, and instant suspicious action alerts.",
+          vi: "Thiết lập hệ thống ghi nhật ký hành động admin bất biến, theo dõi địa chỉ IP và cảnh báo truy cập bất thường.",
+        },
+        accent: "rose",
+      },
+      {
+        title: { en: "Modular Component Architecture", vi: "Kiến trúc Giao diện Mô-đun hóa" },
+        desc: {
+          en: "Standardized reusable UI design tokens, forms, modals, and charts across all internal company backoffices.",
+          vi: "Chuẩn hóa thư viện component, form nhập liệu, modal và biểu đồ dùng chung cho toàn bộ các trang nội bộ.",
+        },
+        accent: "amber",
+      },
+    ],
+    backendContributions: [
+      {
+        en: "Designed unified RESTful and WebSocket API endpoints supporting high-concurrency admin operations.",
+        vi: "Thiết kế các API RESTful và WebSocket hợp nhất đáp ứng các thao tác quản trị viên với độ chịu tải cao.",
+      },
+      {
+        en: "Implemented financial transaction state machines to prevent double-spending and ledger inconsistencies.",
+        vi: "Xây dựng state-machine cho giao dịch tài chính ngăn chặn lỗi duplicate tiền và sai lệch sổ cái.",
+      },
+      {
+        en: "Created asynchronous message queues with Kafka to process bulk notification dispatches without blocking.",
+        vi: "Thiết lập hàng đợi thông điệp bất đồng bộ Kafka để gửi thông báo hàng loạt mà không gây nghẽn hệ thống.",
+      },
+      {
+        en: "Structured PostgreSQL schema indexing and Redis caching to keep complex admin analytics queries under 100ms.",
+        vi: "Tối ưu hóa chỉ mục PostgreSQL và bộ đệm Redis giúp các truy vấn báo cáo thống kê phức tạp phản hồi dưới 100ms.",
+      },
+    ],
+    frontendContributions: [
+      {
+        en: "Constructed slick, dark/light theme-ready enterprise dashboards using Ant Design and custom Tailwind CSS utility layers.",
+        vi: "Xây dựng giao diện dashboard chuyên nghiệp, hiện đại kết hợp Ant Design và các lớp tùy biến Tailwind CSS.",
+      },
+      {
+        en: "Implemented responsive virtualized tables handling 50,000+ data rows with zero frame drops or input lag.",
+        vi: "Phát triển bảng dữ liệu ảo hóa xử lý mượt mà hơn 50.000 dòng dữ liệu mà không gây giật lag giao diện.",
+      },
+      {
+        en: "Built interactive data visualization widgets featuring real-time financial metrics, user growth, and active sessions.",
+        vi: "Phát triển các widget trực quan hóa dữ liệu hiển thị dòng tiền, tỷ lệ tăng trưởng người dùng và phiên hoạt động.",
+      },
+    ],
+    challenges: [
+      {
+        title: {
+          en: "Unified Architecture for Multi-Product Administration",
+          vi: "Kiến trúc Hợp nhất cho Quản trị Đa sản phẩm",
+        },
+        color: "indigo",
+        items: [
+          {
+            en: "Challenge: Organizing heterogeneous admin requirements (Identity, Billing/Topup, Notifications, Content Moderation) from multiple products into one cohesive, standardized internal design system.",
+            vi: "Thử thách: Chuẩn hóa các luồng nghiệp vụ quản trị đa dạng (Quản lý định danh, Nạp tiền/Thanh toán, Thông báo, Quản lý nội dung) từ nhiều sản phẩm về chung một hệ thống thiết kế nội bộ đồng nhất.",
+          },
+          {
+            en: "Solution: Abstracted domain modules into decoupled micro-frontend packages with standardized design tokens, shared authentication hooks, and unified permission boundaries.",
+            vi: "Giải pháp: Trừu tượng hóa các domain nghiệp vụ thành các package mô-đun độc lập với design token chuẩn hóa, hook xác thực dùng chung và ranh giới phân quyền bảo mật thống nhất.",
+          },
+          {
+            en: "Achievement: Reduced development time for new admin modules by 40% while delivering a unified, lightning-fast operational control room.",
+            vi: "Thành tựu: Giảm 40% thời gian phát triển các tính năng quản trị mới, đồng thời cung cấp một trung tâm điều hành nội bộ mượt mà, bảo mật tuyệt đối.",
+          },
+        ],
+      },
+    ],
+  },
 };
 
 const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
@@ -1430,6 +1848,10 @@ const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
       document.title = "Hồ Văn Thanh Phương | Full-Stack Software Engineer";
     };
   }, [project]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [project?.title]);
 
   if (!project) {
     return null;
