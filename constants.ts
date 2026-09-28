@@ -17,6 +17,12 @@ export const findProjectBySlug = (slug: string): Project | undefined => {
   if (!slug) return undefined;
   const cleanSlug = decodeURIComponent(slug).toLowerCase().trim().replace(/^\/project\/?/, "").replace(/\/$/, "");
   
+  // Direct aliases (e.g. onteic, ontoeic, verify-document)
+  if (cleanSlug === "onteic" || cleanSlug === "on-teic" || cleanSlug === "ontoeic" || cleanSlug === "on-toeic") {
+    const p = PROJECTS.find((proj) => proj.title.toLowerCase().includes("toeic"));
+    if (p) return p;
+  }
+
   // 1. Direct getSlug match
   let project = PROJECTS.find((p) => getSlug(p.title) === cleanSlug);
   if (project) return project;
@@ -249,14 +255,14 @@ export const PROJECTS: Project[] = [
       'Speech Recognition API',
       'AI Recommendation System'
     ],
-    image: 'https://ontoeic.com/opengraph-image?521c820942e3ceff',
+    image: 'https://www.ontoeic.com/og-image.png?v=4',
     link: 'https://www.ontoeic.com/',
     year: '2025',
     role: { en: 'Fullstack Developer (Freelance)', vi: 'Lập trình viên Fullstack (Freelance)' },
     subtitle: { en: 'AI-Powered TOEIC Learning Platform', vi: 'Nền tảng luyện thi TOEIC ứng dụng AI' },
     color: '#6366f1',
     images: [
-      'https://ontoeic.com/opengraph-image?521c820942e3ceff',
+      'https://www.ontoeic.com/og-image.png?v=4',
       'https://res.cloudinary.com/fqqdj43k/image/upload/v1785908415/Screenshot_2026-08-05_123658_cwqrbs.png',
       'https://res.cloudinary.com/fqqdj43k/image/upload/v1785908415/729790721_27608574332126704_5403600951846826839_n_kyebij.jpg',
       'https://res.cloudinary.com/fqqdj43k/image/upload/v1785908415/728225676_27585984394385698_5479477221126610036_n_dnv9kg.jpg',
@@ -323,6 +329,7 @@ export const PROJECTS: Project[] = [
     tags: ['Next.js', 'NestJS', 'MongoDB', 'Blockchain', 'TypeScript', 'Tailwind CSS'],
     image: 'https://framerusercontent.com/images/oQYoVQDeWpZRiRLNZegGTlOSXk.png',
     link: 'https://verify-document.risegate.io/',
+    linkExpired: true,
     year: '2025',
     role: { en: 'Fullstack Developer', vi: 'Lập trình viên Fullstack' },
     subtitle: { en: 'Blockchain Document Verification Platform', vi: 'Nền tảng xác thực tài liệu số Blockchain' },

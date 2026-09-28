@@ -1896,7 +1896,7 @@ const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
             </p>
           </div>
 
-          {project.link ? (
+          {project.link && !project.linkExpired ? (
             <motion.a
               whileHover={{
                 scale: 1.03,

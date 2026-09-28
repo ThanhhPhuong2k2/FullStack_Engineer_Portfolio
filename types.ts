@@ -19,6 +19,7 @@ export interface Project {
   tags: string[];
   image: string;
   link?: string;
+  linkExpired?: boolean;
   year?: string;
   role: { en: string; vi: string };
   subtitle: { en: string; vi: string };
